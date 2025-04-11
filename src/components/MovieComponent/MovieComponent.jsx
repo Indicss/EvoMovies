@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 import { PhotoCamera } from '@mui/icons-material';
@@ -22,15 +22,17 @@ export const MovieComponent = () => {
         sx={{
           display: 'grid',
           gridTemplateColumns: 'repeat(12, 1fr)',
-          gap: 2,
         }}
       >
         <Box
           sx={{
-            border: '3px solid', // Grosime + stil (solid/dashed/dotted)
+            border: '1px solid', // Grosime + stil (solid/dashed/dotted)
             borderColor: 'primary.main',
             gridColumn: 'span 8',
-            display: 'grid',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: '300px',
           }}
         >
           <PhotoCamera fontSize="large" />
@@ -38,30 +40,43 @@ export const MovieComponent = () => {
         <Box
           sx={{
             gridColumn: 'span 4',
-            border: '3px solid', // Grosime + stil (solid/dashed/dotted)
+            border: '1px solid', // Grosime + stil (solid/dashed/dotted)
             borderColor: 'primary.main',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            display: 'flex',
+            flexDirection: 'column',
           }}
         >
-          <Item>xs=4</Item>
+          <h1>Title Movie</h1>
+          <Typography>Description Movie</Typography>
+          <Typography>Authors</Typography>
+          <Typography>Regizors</Typography>
         </Box>
         <Box
           sx={{
-            gridColumn: 'span 4',
-            border: '3px solid', // Grosime + stil (solid/dashed/dotted)
-            borderColor: 'primary.main',
+            gridColumn: 'span 12',
           }}
         >
-          <Item>xs=4</Item>
+          <Box
+            sx={{
+              margin: '12px',
+              border: '1px solid',
+              borderColor: 'black',
+              minHeight: '400px',
+              minWidth: '400px',
+            }}
+          ></Box>
         </Box>
         <Box
           sx={{
-            gridColumn: 'span 8',
-            border: '3px solid', // Grosime + stil (solid/dashed/dotted)
-            borderColor: 'primary.main',
+            gridColumn: 'span 12',
+            border: '1px solid',
+            borderColor: 'black',
+            minHeight: '400px',
+            minWidth: '400px',
           }}
-        >
-          <Item>xs=8</Item>
-        </Box>
+        ></Box>
       </Box>
     </Container>
   );
