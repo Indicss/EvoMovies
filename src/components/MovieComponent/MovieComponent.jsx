@@ -66,7 +66,16 @@ export const MovieComponent = () => {
               minHeight: '400px',
               minWidth: '400px',
             }}
-          ></Box>
+          >
+            <video
+              controls
+              width="100%"
+              style={{ borderRadius: '12px', border: '1px solid #ccc' }}
+            >
+              <source src="/video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </Box>
         </Box>
         <Box
           sx={{
