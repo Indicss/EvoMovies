@@ -16,7 +16,6 @@ export const MovieComponent = () => {
       sx={{
         marginTop: '24px',
         padding: '0px 144px',
-        boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.47)',
       }}
     >
       <Box
@@ -31,19 +30,36 @@ export const MovieComponent = () => {
             border: '3px solid', // Grosime + stil (solid/dashed/dotted)
             borderColor: 'primary.main',
             gridColumn: 'span 8',
-            display: 'flex',
+            display: 'grid',
           }}
         >
           <PhotoCamera fontSize="large" />
-          <Item>xs=8</Item>
         </Box>
-        <Box sx={{ gridColumn: 'span 4' }}>
+        <Box
+          sx={{
+            gridColumn: 'span 4',
+            border: '3px solid', // Grosime + stil (solid/dashed/dotted)
+            borderColor: 'primary.main',
+          }}
+        >
           <Item>xs=4</Item>
         </Box>
-        <Box sx={{ gridColumn: 'span 4' }}>
+        <Box
+          sx={{
+            gridColumn: 'span 4',
+            border: '3px solid', // Grosime + stil (solid/dashed/dotted)
+            borderColor: 'primary.main',
+          }}
+        >
           <Item>xs=4</Item>
         </Box>
-        <Box sx={{ gridColumn: 'span 8' }}>
+        <Box
+          sx={{
+            gridColumn: 'span 8',
+            border: '3px solid', // Grosime + stil (solid/dashed/dotted)
+            borderColor: 'primary.main',
+          }}
+        >
           <Item>xs=8</Item>
         </Box>
       </Box>

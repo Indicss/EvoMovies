@@ -1,59 +1,59 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import Header from './components/Header/Header';
-import Cards from './components/Cards/Cards';
-import { Box } from '@mui/material';
-import { MovieComponent } from './components/MovieComponent/MovieComponent';
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import Header from "./components/Header/Header";
+import Cards from "./components/Cards/Cards";
+import { Box } from "@mui/material";
+import { MovieComponent } from "./components/MovieComponent/MovieComponent";
 
 const Films = [
   {
-    name: 'Cars',
-    description: 'Mama mega bongiorno!!',
+    name: "Cars",
+    description: "Mama mega bongiorno!!",
   },
   {
-    name: 'Aladin',
-    description: 'alahabar',
+    name: "Aladin",
+    description: "alahabar",
   },
   {
-    name: 'Aladin2',
-    description: 'alahabar2',
+    name: "Aladin2",
+    description: "alahabar2",
   },
   {
-    name: 'Aladin2',
-    description: 'alahabar2',
+    name: "Aladin2",
+    description: "alahabar2",
   },
   {
-    name: 'Aladin2',
-    description: 'alahabar2',
+    name: "Aladin2",
+    description: "alahabar2",
   },
   {
-    name: 'Aladin2',
-    description: 'alahabar2',
+    name: "Aladin2",
+    description: "alahabar2",
   },
   {
-    name: 'Aladin2',
-    description: 'alahabar2',
+    name: "Aladin2",
+    description: "alahabar2",
   },
   {
-    name: 'Aladin2',
-    description: 'alahabar2',
+    name: "Aladin2",
+    description: "alahabar2",
   },
   {
-    name: 'Aladin2',
-    description: 'alahabar2',
+    name: "Aladin2",
+    description: "alahabar2",
   },
   {
-    name: 'Aladin2',
-    description: 'alahabar2',
+    name: "Aladin2",
+    description: "alahabar2",
   },
   {
-    name: 'Aladin2',
-    description: 'alahabar2',
+    name: "Aladin2",
+    description: "alahabar2",
   },
   {
-    name: 'Aladin2',
-    description: 'alahabar2',
+    name: "Aladin2",
+    description: "alahabar2",
   },
 ];
 
