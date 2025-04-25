@@ -5,7 +5,7 @@ import {
   Typography,
   Button,
   CardMedia,
-  CardActionArea,
+  Box,
 } from '@mui/material';
 
 export const CardForMovie = ({
@@ -22,7 +22,6 @@ export const CardForMovie = ({
         height: 500,
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between',
       }}
     >
       <CardMedia
@@ -32,22 +31,33 @@ export const CardForMovie = ({
         alt={title}
         sx={{ objectFit: 'cover' }}
       />
-      <CardContent sx={{ height: '100%', flexGrow: 1 }}>
-        <Typography variant="h5" component="div" sx={{ marginBottom: '16px' }}>
-          {title}
-        </Typography>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          paragraph
-          sx={{ flexGrow: 1 }}
-        >
-          {description}
-        </Typography>
-        <Button variant="contained" color="primary" sx={{ marginTop: 'auto' }}>
-          Vizionează
-        </Button>
-      </CardContent>
+      <Box
+        sx={{
+          flexGrow: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+        }}
+      >
+        <CardContent>
+          <Typography variant="h5" component="div" sx={{ mb: 2 }}>
+            {title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {description}
+          </Typography>
+        </CardContent>
+        <Box sx={{ p: 2, pt: 0 }}>
+          <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            onClick={onButtonClick}
+          >
+            Vizionează
+          </Button>
+        </Box>
+      </Box>
     </Card>
   );
 };
