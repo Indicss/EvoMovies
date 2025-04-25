@@ -4,8 +4,8 @@ export const NotFoundPage = () => {
   return (
     <>
       <h1>Pagina nu este găsită!</h1>
-      <Link to="/">
-        <button>Spre pagina principală</button>
+      <Link to="/UserProfile">
+        <button>Spre profilul personal</button>
       </Link>
     </>
   );
