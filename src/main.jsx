@@ -6,12 +6,14 @@ import { LoginForm } from './components/LoginForm/LoginForm.jsx';
 import { MovieComponent } from './components/MovieComponent/MovieComponent.jsx';
 import { NotFoundPage } from './components/NotFoundPage.jsx';
 import { UserProfile } from './components/UserProfile/UserProfile.jsx';
+import { MovieGallery } from './components/MovieGallery/MovieGallery.jsx';
 
 const router = createBrowserRouter([
   { path: '/', element: <App /> },
   { path: '/LoginForm', element: <LoginForm /> },
   { path: '/MovieComponent', element: <MovieComponent /> },
   { path: '/UserProfile', element: <UserProfile /> },
+  { path: '/MovieGallery', element: <MovieGallery /> },
   { path: '*', element: <NotFoundPage /> },
 ]);
 

@@ -73,7 +73,7 @@ export const MovieComponent = () => {
                   style={{ borderRadius: '12px', border: '1px solid #ccc' }}
                 >
                   <source src="/video.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
+                  Browserul nu suporta video tag.
                 </video>
               </Box>
             </Box>
