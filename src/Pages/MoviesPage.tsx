@@ -4,11 +4,14 @@ import { FiSearch, FiStar } from "react-icons/fi";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 
+type Genre = "All" | "Action" | "Adventure" | "Comedy" | "Drama" | "Horror";
+type SortType = "Popular" | "Newest";
+
 type Movie = {
     id: string;
     title: string;
     year: number;
-    genre: "Action" | "Adventure" | "Comedy" | "Drama" | "Horror";
+    genre: Exclude<Genre, "All">;
     rating: number;
     poster: string;
     video: string;
@@ -62,7 +65,7 @@ const MOVIES: Movie[] = [
     },
 ];
 
-const GENRES: Array<Movie["genre"] | "All"> = [
+const GENRES: Genre[] = [
     "All",
     "Action",
     "Adventure",
@@ -70,6 +73,7 @@ const GENRES: Array<Movie["genre"] | "All"> = [
     "Drama",
     "Horror",
 ];
+const SORTS: SortType[] = ["Popular", "Newest"];
 
 function MovieCard({ movie }: { movie: Movie }) {
     return (
@@ -115,23 +119,42 @@ function MovieCard({ movie }: { movie: Movie }) {
 }
 
 export default function MoviesPage() {
-    const [query, setQuery] = useState("");
-    const [genre, setGenre] = useState<(typeof GENRES)[number]>("All");
-    const [sort, setSort] = useState<"Popular" | "Newest">("Popular");
+    const [query, setQuery] = useState<string>("");
+    const [genre, setGenre] = useState<Genre>("All");
+    const [sort, setSort] = useState<SortType>("Popular");
 
     const filtered = useMemo(() => {
         let list = [...MOVIES];
 
-        if (genre !== "All") list = list.filter((m) => m.genre === genre);
+        if (genre !== "All") {
+            list = list.filter((m) => m.genre === genre);
+        }
 
         const q = query.trim().toLowerCase();
-        if (q) list = list.filter((m) => m.title.toLowerCase().includes(q));
+        if (q) {
+            list = list.filter((m) => m.title.toLowerCase().includes(q));
+        }
 
-        if (sort === "Newest") list.sort((a, b) => b.year - a.year);
-        else list.sort((a, b) => b.rating - a.rating);
+        if (sort === "Newest") {
+            list.sort((a, b) => b.year - a.year);
+        } else {
+            list.sort((a, b) => b.rating - a.rating);
+        }
 
         return list;
     }, [query, genre, sort]);
+
+    const handleGenreChange = (value: string) => {
+        if ((GENRES as readonly string[]).includes(value)) {
+            setGenre(value as Genre);
+        }
+    };
+
+    const handleSortChange = (value: string) => {
+        if ((SORTS as readonly string[]).includes(value)) {
+            setSort(value as SortType);
+        }
+    };
 
     return (
         <div className="min-h-screen bg-black text-white">
@@ -165,7 +188,7 @@ export default function MoviesPage() {
                                 <select
                                     value={genre}
                                     onChange={(e) =>
-                                        setGenre(e.target.value as any)
+                                        handleGenreChange(e.target.value)
                                     }
                                     className="bg-transparent text-sm outline-none"
                                 >
@@ -185,19 +208,19 @@ export default function MoviesPage() {
                                 <select
                                     value={sort}
                                     onChange={(e) =>
-                                        setSort(e.target.value as any)
+                                        handleSortChange(e.target.value)
                                     }
                                     className="bg-transparent text-sm outline-none"
                                 >
-                                    <option
-                                        value="Popular"
-                                        className="bg-black"
-                                    >
-                                        Popular
-                                    </option>
-                                    <option value="Newest" className="bg-black">
-                                        Newest
-                                    </option>
+                                    {SORTS.map((s) => (
+                                        <option
+                                            key={s}
+                                            value={s}
+                                            className="bg-black"
+                                        >
+                                            {s}
+                                        </option>
+                                    ))}
                                 </select>
                             </div>
                         </div>
