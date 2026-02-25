@@ -128,7 +128,7 @@ export default function MoviesPage() {
 
                     {movies.length === 0 && (
                         <div className="mt-16 rounded-2xl border border-white/10 bg-white/[0.02] p-10 text-white/60">
-                            No movies found. Try another search or genre.
+                            No movies found. Try another search or genre.1
                         </div>
                     )}
                 </div>
