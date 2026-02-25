@@ -1,4 +1,4 @@
-import { FiFacebook, FiTwitter, FiLinkedin } from "react-icons/fi";
+import { FiFacebook, FiLinkedin, FiTwitter } from "react-icons/fi";
 
 const footerColumns = [
     {
@@ -25,7 +25,7 @@ const footerColumns = [
 
 function Footer() {
     return (
-        <footer className="bg-black px-6 pt-20 pb-10 text-white">
+        <footer className="bg-black px-6 pb-10 pt-20 text-white">
             <div className="mx-auto max-w-7xl">
                 <div className="grid grid-cols-2 gap-10 md:grid-cols-3 lg:grid-cols-6">
                     {footerColumns.map((col) => (

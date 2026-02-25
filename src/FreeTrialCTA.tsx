@@ -1,14 +1,8 @@
 function FreeTrialCTA() {
     return (
-        <section className="bg-black px-6 pt-10 pb-24 text-white">
+        <section className="bg-black px-6 pb-24 pt-10 text-white">
             <div className="mx-auto max-w-7xl">
-                <div
-                    className="
-            relative overflow-hidden rounded-2xl
-            border border-white/10
-            min-h-[220px] md:min-h-[260px]
-          "
-                >
+                <div className="relative min-h-[220px] overflow-hidden rounded-2xl border border-white/10 md:min-h-[260px]">
                     <div
                         className="absolute inset-0 bg-cover bg-center"
                         style={{
@@ -26,7 +20,7 @@ function FreeTrialCTA() {
                             <h3 className="text-4xl font-semibold tracking-tight md:text-5xl">
                                 Start your free trial today!
                             </h3>
-                            <p className="mt-5 max-w-2xl text-white/55 leading-7">
+                            <p className="mt-5 max-w-2xl leading-7 text-white/55">
                                 This is a clear and concise call to action that
                                 encourages users to sign up for a free trial of
                                 EvoMovies.

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FiPlus, FiMinus } from "react-icons/fi";
+import { FiMinus, FiPlus } from "react-icons/fi";
 
 type FAQ = {
     id: number;
@@ -58,7 +58,7 @@ function FrequentlyAskedQuestions() {
     };
 
     return (
-        <section className="bg-black px-6 pt-24 pb-24 text-white">
+        <section className="bg-black px-6 pb-24 pt-24 text-white">
             <div className="mx-auto max-w-7xl">
                 <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
                     <div>

@@ -1,10 +1,10 @@
-import Navbar from "../Components/Navbar";
 import CategoriesSection from "../CategoriesSection";
+import Footer from "../Components/Footer";
+import Navbar from "../Components/Navbar";
 import CrossPlatform from "../CrossPlatform";
+import FreeTrialCTA from "../FreeTrialCTA";
 import FrequentlyAskedQuestions from "../FrequentlyAskedQuestions";
 import PricingPlans from "../PricingPlans";
-import FreeTrialCTA from "../FreeTrialCTA";
-import Footer from "../Components/Footer";
 
 export default function HomePage() {
     return (
@@ -40,7 +40,7 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <section className="bg-black pt-10 pb-0">
+            <section className="bg-black pb-0 pt-10">
                 <CategoriesSection />
             </section>
 

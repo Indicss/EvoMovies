@@ -1,4 +1,4 @@
-import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
 type Category = {
     name: string;

@@ -27,14 +27,11 @@ function Navbar() {
                                 <li key={link.label}>
                                     <Link
                                         to={link.path}
-                                        className={`
-                      block rounded-xl px-4 py-2 text-sm transition
-                      ${
-                          isActive
-                              ? "bg-white/10 text-white"
-                              : "text-white/80 hover:bg-white/10 hover:text-white"
-                      }
-                    `}
+                                        className={`block rounded-xl px-4 py-2 text-sm transition ${
+                                            isActive
+                                                ? "bg-white/10 text-white"
+                                                : "text-white/80 hover:bg-white/10 hover:text-white"
+                                        } `}
                                     >
                                         {link.label}
                                     </Link>

@@ -38,7 +38,7 @@ function PricingPlans() {
     }, [billing]);
 
     return (
-        <section className="bg-black px-6 pt-12 pb-24 text-white">
+        <section className="bg-black px-6 pb-24 pt-12 text-white">
             <div className="mx-auto max-w-7xl">
                 <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
                     <div>
@@ -88,16 +88,12 @@ function PricingPlans() {
                         return (
                             <div
                                 key={p.name}
-                                className="
-                  rounded-2xl border border-white/10 bg-white/[0.02]
-                  p-10 backdrop-blur
-                  transition hover:border-white/20
-                "
+                                className="rounded-2xl border border-white/10 bg-white/[0.02] p-10 backdrop-blur transition hover:border-white/20"
                             >
                                 <h3 className="text-2xl font-semibold">
                                     {p.name}
                                 </h3>
-                                <p className="mt-4 text-white/55 leading-7">
+                                <p className="mt-4 leading-7 text-white/55">
                                     {p.desc}
                                 </p>
 

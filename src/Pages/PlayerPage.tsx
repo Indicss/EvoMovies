@@ -1,7 +1,8 @@
 import { useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Navbar from "../Components/Navbar";
+
 import Footer from "../Components/Footer";
+import Navbar from "../Components/Navbar";
 
 type Movie = {
     id: string;
@@ -65,7 +66,7 @@ export default function PlayerPage() {
         <div className="min-h-screen bg-black text-white">
             <Navbar />
 
-            <main className="px-6 pt-10 pb-24">
+            <main className="px-6 pb-24 pt-10">
                 <div className="mx-auto max-w-6xl">
                     <div className="flex items-center justify-between gap-4">
                         <h1 className="text-3xl font-semibold">

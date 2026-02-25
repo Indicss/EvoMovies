@@ -1,9 +1,9 @@
 import {
-    FiSmartphone,
-    FiTablet,
-    FiMonitor,
     FiBox,
     FiHeadphones,
+    FiMonitor,
+    FiSmartphone,
+    FiTablet,
 } from "react-icons/fi";
 
 type DeviceCard = {
@@ -47,7 +47,7 @@ const devices: DeviceCard[] = [
 
 function CrossPlatform() {
     return (
-        <section className="bg-black px-6 pt-5 pb-24 text-white">
+        <section className="bg-black px-6 pb-24 pt-5 text-white">
             <div className="mx-auto max-w-7xl">
                 <h2 className="text-4xl font-semibold tracking-tight">
                     We Provide you streaming experience across various devices.
@@ -64,12 +64,7 @@ function CrossPlatform() {
                     {devices.map((device) => (
                         <div
                             key={device.title}
-                            className="
-                relative overflow-hidden rounded-2xl
-                border border-white/10 bg-white/[0.02]
-                p-8 backdrop-blur
-                transition hover:border-white/20
-              "
+                            className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-8 backdrop-blur transition hover:border-white/20"
                         >
                             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,0,0,0.18),transparent_55%)]" />
 
@@ -85,7 +80,7 @@ function CrossPlatform() {
                                 </h3>
                             </div>
 
-                            <p className="relative z-10 mt-6 text-white/55 leading-7">
+                            <p className="relative z-10 mt-6 leading-7 text-white/55">
                                 {device.desc}
                             </p>
 
