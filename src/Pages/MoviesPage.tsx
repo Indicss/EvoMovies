@@ -30,6 +30,7 @@ export default function MoviesPage() {
         fetch("http://localhost:5047/api/movies")
             .then((response) => response.json())
             .then((data) => {
+                console.log("API DATA:", data);
                 const movies = data.map(
                     (movie: any) =>
                         ({
@@ -38,8 +39,8 @@ export default function MoviesPage() {
                             year: new Date(movie.releaseDate).getFullYear(),
                             genre: movie.genre,
                             rating: 8.2,
-                            poster: "https://4kwallpapers.com/images/walls/thumbs_2t/25125.jpg",
-                            video: "https://www.w3schools.com/html/mov_bbb.mp4",
+                            poster: movie.poster,
+                            video: movie.url,
                         }) as Movie,
                 );
 
