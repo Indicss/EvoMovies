@@ -34,6 +34,9 @@ export const MovieCard = ({ movie }: MovieCardProps) => (
                     <p className="mt-1 text-sm text-white/55">
                         {movie.genre} • {movie.year}
                     </p>
+                    <p className="mt-1 text-xs text-white/40">
+  Director: {movie.director}
+</p>
                 </div>
 
                 <Link to={`/player/${movie.id}`}>

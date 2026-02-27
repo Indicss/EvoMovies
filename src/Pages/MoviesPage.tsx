@@ -41,6 +41,7 @@ export default function MoviesPage() {
                             rating: 8.2,
                             poster: movie.poster,
                             video: movie.url,
+                            director: movie.director,
                         }) as Movie,
                 );
 

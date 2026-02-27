@@ -6,4 +6,5 @@ export type Movie = {
     rating: number;
     poster: string;
     video: string;
+    director: string;
 };
