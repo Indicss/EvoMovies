@@ -34,16 +34,17 @@ export default function MoviesPage() {
         genre?: string | undefined,
         sort?: string | undefined,
     ): void => {
-        let query = "http://localhost:5047/api/movies";
-        if (search || genre || sort) {
-            query = `${query}?`;
-        }
+        const baseUrl = "http://localhost:5047/api/movies";
+        const params = new URLSearchParams();
 
-        if (search) query = `${query}search=${encodeURIComponent(search)}`;
-        if (genre) query = `${query}genre=${encodeURIComponent(genre)}`;
-        if (sort) query = `${query}sort=${encodeURIComponent(sort)}`;
+        if (search) params.append("search", search);
+        if (genre && genre !== "All") params.append("genre", genre);
+        if (sort) params.append("sort", sort);
 
-        fetch(query)
+        const finalUrl =
+            params.size > 0 ? `${baseUrl}?${params.toString()}` : baseUrl;
+
+        fetch(finalUrl)
             .then((response) => response.json())
             .then((data) => {
                 const movies = data.map(
@@ -66,8 +67,8 @@ export default function MoviesPage() {
     };
 
     useEffect(() => {
-        retrieveMovies(search);
-    }, [search]);
+        retrieveMovies(search, genre, sort);
+    }, [search, genre, sort]);
 
     return (
         <div className="min-h-screen bg-black text-white">
