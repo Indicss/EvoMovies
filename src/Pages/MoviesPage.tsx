@@ -1,36 +1,51 @@
 import { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import { useSearchParams } from "react-router-dom";
 
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import { GENRES, MovieCard, type Movie } from "../features/movies";
 
 export default function MoviesPage() {
-    const [query, setQuery] = useState("");
-    const [genre, setGenre] = useState<(typeof GENRES)[number]>("All");
-    const [sort, setSort] = useState<"Popular" | "Newest">("Popular");
-
-    /*const filtered = useMemo(() => {
-        let list = [...MOVIES];
-
-        if (genre !== "All") list = list.filter((m) => m.genre === genre);
-
-        const q = query.trim().toLowerCase();
-        if (q) list = list.filter((m) => m.title.toLowerCase().includes(q));
-
-        if (sort === "Newest") list.sort((a, b) => b.year - a.year);
-        else list.sort((a, b) => b.rating - a.rating);
-
-        return list;
-    }, [query, genre, sort]);*/
+    const [searchParams, setSearchParams] = useSearchParams();
+    const search = searchParams.get("search") || "";
+    const genre = searchParams.get("genre") || "All";
+    const sort =
+        (searchParams.get("sort") as "Popular" | "Newest") || "Popular";
 
     const [movies, setMovies] = useState<Movie[]>([]);
 
-    useEffect(() => {
-        fetch("http://localhost:5047/api/movies")
+    const updateFilters = (key: string, value: string) => {
+        setSearchParams(
+            (prev) => {
+                if (value && value !== "All") {
+                    prev.set(key, value);
+                } else {
+                    prev.delete(key);
+                }
+                return prev;
+            },
+            { replace: true },
+        );
+    };
+
+    const retrieveMovies = (
+        search?: string | undefined,
+        genre?: string | undefined,
+        sort?: string | undefined,
+    ): void => {
+        let query = "http://localhost:5047/api/movies";
+        if (search || genre || sort) {
+            query = `${query}?`;
+        }
+
+        if (search) query = `${query}search=${encodeURIComponent(search)}`;
+        if (genre) query = `${query}genre=${encodeURIComponent(genre)}`;
+        if (sort) query = `${query}sort=${encodeURIComponent(sort)}`;
+
+        fetch(query)
             .then((response) => response.json())
             .then((data) => {
-                console.log("API DATA:", data);
                 const movies = data.map(
                     (movie: any) =>
                         ({
@@ -48,7 +63,11 @@ export default function MoviesPage() {
                 setMovies(movies);
             })
             .catch((error) => console.log(error));
-    }, []);
+    };
+
+    useEffect(() => {
+        retrieveMovies(search);
+    }, [search]);
 
     return (
         <div className="min-h-screen bg-black text-white">
@@ -71,8 +90,10 @@ export default function MoviesPage() {
                             <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 backdrop-blur">
                                 <FiSearch className="text-white/60" />
                                 <input
-                                    value={query}
-                                    onChange={(e) => setQuery(e.target.value)}
+                                    value={search}
+                                    onChange={(e) =>
+                                        updateFilters("search", e.target.value)
+                                    }
                                     placeholder="Search movies..."
                                     className="w-64 bg-transparent text-sm outline-none placeholder:text-white/35"
                                 />
@@ -82,7 +103,7 @@ export default function MoviesPage() {
                                 <select
                                     value={genre}
                                     onChange={(e) =>
-                                        setGenre(e.target.value as any)
+                                        updateFilters("genre", e.target.value)
                                     }
                                     className="bg-transparent text-sm outline-none"
                                 >
@@ -102,7 +123,7 @@ export default function MoviesPage() {
                                 <select
                                     value={sort}
                                     onChange={(e) =>
-                                        setSort(e.target.value as any)
+                                        updateFilters("sort", e.target.value)
                                     }
                                     className="bg-transparent text-sm outline-none"
                                 >
