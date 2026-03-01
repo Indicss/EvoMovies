@@ -4,11 +4,17 @@ import { useSearchParams } from "react-router-dom";
 
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-import { GENRES, MovieCard, type Movie } from "../features/movies";
+import {
+    GENRES,
+    MovieCard,
+    useDebouncedSearch,
+    type Movie,
+} from "../features/movies";
 
 export default function MoviesPage() {
     const [searchParams, setSearchParams] = useSearchParams();
-    const search = searchParams.get("search") || "";
+
+    const [searchTerm, setSearchTerm] = useDebouncedSearch("search");
     const genre = searchParams.get("genre") || "All";
     const sort =
         (searchParams.get("sort") as "Popular" | "Newest") || "Popular";
@@ -75,8 +81,9 @@ export default function MoviesPage() {
     };
 
     useEffect(() => {
+        const search = searchParams.get("search") || "";
         retrieveMovies(search, genre, sort);
-    }, [search, genre, sort]);
+    }, [searchParams, genre, sort]);
 
     return (
         <div className="min-h-screen bg-black text-white">
@@ -99,9 +106,9 @@ export default function MoviesPage() {
                             <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 backdrop-blur">
                                 <FiSearch className="text-white/60" />
                                 <input
-                                    value={search}
+                                    value={searchTerm}
                                     onChange={(e) =>
-                                        updateFilters("search", e.target.value)
+                                        setSearchTerm(e.target.value)
                                     }
                                     placeholder="Search movies..."
                                     className="w-64 bg-transparent text-sm outline-none placeholder:text-white/35"
