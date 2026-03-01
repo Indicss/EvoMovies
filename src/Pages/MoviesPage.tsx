@@ -48,7 +48,15 @@ export default function MoviesPage() {
             .then((response) => response.json())
             .then((data) => {
                 const movies = data.map(
-                    (movie: any) =>
+                    (movie: {
+                        id: string;
+                        title: string;
+                        releaseDate: string | Date;
+                        genre: string;
+                        poster: string;
+                        url: string;
+                        director: string;
+                    }) =>
                         ({
                             id: movie.id,
                             title: movie.title,
